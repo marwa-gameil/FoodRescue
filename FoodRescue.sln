@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodRescue.Domain", "FoodRescue.Domain\FoodRescue.Domain.csproj", "{8482118F-AF07-456A-B122-424BFB9ACEFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodRescue.Application", "FoodRescue.Application\FoodRescue.Application.csproj", "{5B0979B2-F2DB-4518-BEA6-1447C18CB078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodRescue.Infrastructure", "FoodRescue.Infrastructure\FoodRescue.Infrastructure.csproj", "{0659C324-7715-4733-9FD5-2D4174E61D18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodRescue.API", "FoodRescue.API\FoodRescue.API.csproj", "{144BC6D5-A659-411C-9848-27677568C587}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8482118F-AF07-456A-B122-424BFB9ACEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8482118F-AF07-456A-B122-424BFB9ACEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8482118F-AF07-456A-B122-424BFB9ACEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8482118F-AF07-456A-B122-424BFB9ACEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B0979B2-F2DB-4518-BEA6-1447C18CB078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B0979B2-F2DB-4518-BEA6-1447C18CB078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B0979B2-F2DB-4518-BEA6-1447C18CB078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B0979B2-F2DB-4518-BEA6-1447C18CB078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0659C324-7715-4733-9FD5-2D4174E61D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0659C324-7715-4733-9FD5-2D4174E61D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0659C324-7715-4733-9FD5-2D4174E61D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0659C324-7715-4733-9FD5-2D4174E61D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{144BC6D5-A659-411C-9848-27677568C587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{144BC6D5-A659-411C-9848-27677568C587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{144BC6D5-A659-411C-9848-27677568C587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{144BC6D5-A659-411C-9848-27677568C587}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
