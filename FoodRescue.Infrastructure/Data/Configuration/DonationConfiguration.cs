@@ -20,7 +20,7 @@ namespace FoodRescue.Infrastructure.Data.Configuration
             builder.HasOne(c => c.Doner)
              .WithMany()
              .HasForeignKey(c => c.UserId);
-            /*
+            
             builder.HasData(
 
             new List<Donation>
@@ -35,7 +35,7 @@ namespace FoodRescue.Infrastructure.Data.Configuration
                      Status = "Pending",
                      Location = "NY Warehouse",
                      UserId = Guid.Parse("00000000-0000-0000-0000-000000000005"),
-                     CharityId =Guid.Parse("00000000-0000-0000-0000-000000000002")
+                     CharityId =Guid.Parse("00000000-0000-0000-0000-000000000004")
                  },
                 new Donation (Guid.Parse("00000000-0000-0000-0000-000000000007")) {
                     
@@ -45,10 +45,10 @@ namespace FoodRescue.Infrastructure.Data.Configuration
                     Status = "Approved",
                     Location = "CA Storage",
                     UserId=Guid.Parse("00000000-0000-0000-0000-000000000004"),
-                    CharityId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                    CharityId = Guid.Parse("00000000-0000-0000-0000-000000000005")
                 }
             }
-            );*/
+            );
         }
     }
 }
