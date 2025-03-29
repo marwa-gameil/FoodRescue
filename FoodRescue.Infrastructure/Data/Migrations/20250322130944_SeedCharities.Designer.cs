@@ -4,6 +4,7 @@ using FoodRescue.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodRescue.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250322130944_SeedCharities")]
+    partial class SeedCharities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,30 +102,6 @@ namespace FoodRescue.Infrastructure.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Donation");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("00000000-0000-0000-0000-000000000006"),
-                            CharityId = new Guid("00000000-0000-0000-0000-000000000004"),
-                            FoodType = "Canned Goods",
-                            Location = "NY Warehouse",
-                            PickupTime = new DateTime(2025, 3, 22, 15, 19, 24, 242, DateTimeKind.Utc),
-                            Quantity = 20,
-                            Status = "Pending",
-                            UserId = new Guid("00000000-0000-0000-0000-000000000005")
-                        },
-                        new
-                        {
-                            Id = new Guid("00000000-0000-0000-0000-000000000007"),
-                            CharityId = new Guid("00000000-0000-0000-0000-000000000005"),
-                            FoodType = "Fresh Vegetables",
-                            Location = "CA Storage",
-                            PickupTime = new DateTime(2025, 3, 23, 15, 19, 24, 242, DateTimeKind.Utc),
-                            Quantity = 50,
-                            Status = "Approved",
-                            UserId = new Guid("00000000-0000-0000-0000-000000000004")
-                        });
                 });
 
             modelBuilder.Entity("FoodRescue.Domain.Models.User", b =>
