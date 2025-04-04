@@ -1,3 +1,5 @@
+using FoodRescue.Application.Interfaces;
+using FoodRescue.Application.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +14,10 @@ public static class DependencyInjection
     /// <returns>A reference to this instance after injecting services</returns>
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
+        services.AddScoped<ICharityService, CharityService>();
+        services.AddScoped<ICookieAuthService,CookieAuthService>();
+        services.AddScoped<IUserService,UserService>();
+
         return services;
     }
 }
