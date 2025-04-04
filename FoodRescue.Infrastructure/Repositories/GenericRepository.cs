@@ -42,4 +42,6 @@ public class GenericRepository<TModel> : IRepository<TModel> where TModel : Base
 
     public virtual void Delete(TModel model) =>
         _dbSet.Remove(model);
+
+    public async virtual Task Save() => await _context.SaveChangesAsync();
 }
