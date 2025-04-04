@@ -15,7 +15,7 @@ namespace FoodRescue.Infrastructure.Data.Configuration
         {
             builder.HasOne(c => c.Charity)
                 .WithMany()
-                .HasForeignKey(c => c.CharityId);
+                .HasForeignKey(c => c.CharityId).OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(c => c.Doner)
              .WithMany()

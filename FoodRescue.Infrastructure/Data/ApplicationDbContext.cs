@@ -18,10 +18,6 @@ public sealed class ApplicationDbContext: IdentityDbContext<User, IdentityRole<G
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
-        modelBuilder.Entity<Donation>()
-        .HasOne(d => d.Charity)              // Assuming Charity is a navigation property
-        .WithMany(c => c.DonationsReceived)          // Assuming Donations is a collection in Charity
-        .HasForeignKey(d => d.CharityId)     // The foreign key column
-        .OnDelete(DeleteBehavior.Restrict);
+  
     }
 }
