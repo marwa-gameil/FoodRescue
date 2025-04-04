@@ -52,7 +52,7 @@ namespace FoodRescue.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CharityId")
+                    b.Property<Guid?>("CharityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FoodType")
@@ -95,6 +95,7 @@ namespace FoodRescue.Infrastructure.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -115,6 +116,7 @@ namespace FoodRescue.Infrastructure.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
@@ -397,10 +399,9 @@ namespace FoodRescue.Infrastructure.Data.Migrations
             modelBuilder.Entity("FoodRescue.Domain.Models.Donation", b =>
                 {
                     b.HasOne("FoodRescue.Domain.Models.Charity", "Charity")
-                        .WithMany("DonationsReceived")
+                        .WithMany()
                         .HasForeignKey("CharityId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("FoodRescue.Domain.Models.User", "Doner")
                         .WithMany()
@@ -462,11 +463,6 @@ namespace FoodRescue.Infrastructure.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("FoodRescue.Domain.Models.Charity", b =>
-                {
-                    b.Navigation("DonationsReceived");
                 });
 #pragma warning restore 612, 618
         }
