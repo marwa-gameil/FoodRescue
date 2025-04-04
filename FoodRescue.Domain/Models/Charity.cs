@@ -12,6 +12,10 @@ namespace FoodRescue.Domain.Models
         {
             Id = id;
         }
+        public Charity()
+        {
+            
+        }
         public Guid UserId { get; set; }
         public bool IsVerfied { get; set; }
         public string VerificationDocument { get; set; }
@@ -19,8 +23,7 @@ namespace FoodRescue.Domain.Models
         public User User { get; set; }
 
 
-        // 1 to many relationship
-        public ICollection<Donation> DonationsReceived { get; set; }
+       
        
         
     }

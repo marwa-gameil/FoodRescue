@@ -7,11 +7,9 @@ namespace FoodRescue.Domain.Models
     public class User : IdentityUser<Guid>
     {
 
-        public string? Name { get; set; }
-
-
-        public string? Address { get; set; }
-
+        public required string Name { get; set; }
+        public required string Address { get; set; }
+     
 
     }
     
