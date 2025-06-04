@@ -9,6 +9,7 @@ public static class WebAppExtensions
     public static void Configure(this WebApplication app)
     {
         app.UseHttpsRedirection();
+        app.UseStaticFiles();
         app.UseAuthentication();
         app.UseCors("CorsPolicy");
         app.UseAuthorization();

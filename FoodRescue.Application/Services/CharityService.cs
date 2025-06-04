@@ -20,13 +20,14 @@ namespace FoodRescue.Application.Services
     {
         private readonly IRepository<Charity> _charities;
         private readonly UserManager<User> _userManager;
-        
 
-        public CharityService(IRepository<Charity> charities, UserManager<User> userManager)
+        string _domain;
+        public CharityService(IRepository<Charity> charities, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _charities = charities;
             _userManager = userManager;
-           
+            _domain = $"{httpContextAccessor.HttpContext!.Request.Scheme}://{httpContextAccessor.HttpContext!.Request.Host.Value}";
+
         }
 
         public async Task<Result> ActivateCharity(Guid id)
@@ -74,7 +75,7 @@ namespace FoodRescue.Application.Services
                 UserName = user.Name,
                 IsVerfied = false,
                 UserId = user.Id,
-                VerificationDocumentURL = $"http://127.0.0.1:5193/docs/{charity.VerificationDocument}"
+                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}"
             };
 
             return Result.Success(charitydto);
@@ -103,7 +104,7 @@ namespace FoodRescue.Application.Services
                 UserName = charity.User.Name,
                 IsVerfied = charity.IsVerfied,
                 UserId = charity.UserId,
-                VerificationDocumentURL = $"http://127.0.0.1:5193/{charity.VerificationDocument}"
+                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}"
 
             };
             return Result.Success(await _charities.GetAll(charityWithUser));
@@ -121,7 +122,7 @@ namespace FoodRescue.Application.Services
                 UserName = charity.User.Name,
                 IsVerfied = charity.IsVerfied,
                 UserId = charity.UserId,
-                VerificationDocumentURL = $"http://127.0.0.1:5193/{charity.VerificationDocument}"
+                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}"
             
             };
             var charity = await _charities.GetOne(charityWithUser);
