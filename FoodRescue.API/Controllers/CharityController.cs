@@ -24,20 +24,21 @@ namespace FoodRescue.API.Controllers
         public async Task<ActionResult<CharityDto>>GetById(Guid id) =>
              HandleResult(await _charityService.GetCharityByIdAsync(id));
 
+        [HttpPatch("{id}")]
+        public async Task<ActionResult>ActivateCharity(Guid id) =>
+            HandleResult(await _charityService.ActivateCharity(id));
+        /*
         [HttpPost]
         public async Task<ActionResult<CharityDto>>AddCharity([FromForm] CharityCreatDto charityCreatDto) =>
             HandleResult(await _charityService.AddCharityAsync(charityCreatDto));
 
-        [HttpPatch("{id}")]
-        public async Task<ActionResult>ActivateCharity(Guid id) =>
-            HandleResult(await _charityService.ActivateCharity(id));
 
         [HttpDelete("{id}")]
         public async Task<ActionResult>DeleteCharity(Guid id) =>
             HandleResult(await _charityService.DeleteCharityAsync(id));
 
 
-
+        */
 
 
     }

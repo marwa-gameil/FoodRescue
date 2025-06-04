@@ -32,7 +32,7 @@ namespace FoodRescue.Infrastructure.Data.Configuration
                      FoodType = "Canned Goods",
                      Quantity = 20,
                      PickupTime =new DateTime(2025, 3, 22, 15, 19, 24, 242, DateTimeKind.Utc),
-                     Status = "Pending",
+                     Status = Donation.DonationStatus.Pending,
                      Location = "NY Warehouse",
                      UserId = Guid.Parse("00000000-0000-0000-0000-000000000005"),
                      CharityId =Guid.Parse("00000000-0000-0000-0000-000000000004")
@@ -42,7 +42,7 @@ namespace FoodRescue.Infrastructure.Data.Configuration
                     FoodType = "Fresh Vegetables",
                     Quantity = 50,
                     PickupTime =new DateTime(2025, 3, 23, 15, 19, 24, 242, DateTimeKind.Utc),
-                    Status = "Approved",
+                    Status = Donation.DonationStatus.Approved,
                     Location = "CA Storage",
                     UserId=Guid.Parse("00000000-0000-0000-0000-000000000004"),
                     CharityId = Guid.Parse("00000000-0000-0000-0000-000000000005")

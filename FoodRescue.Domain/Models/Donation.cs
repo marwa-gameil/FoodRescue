@@ -7,18 +7,26 @@ using System.Threading.Tasks;
 
 namespace FoodRescue.Domain.Models
 {
-    public class Donation  : BaseModel
+    public class Donation : BaseModel
     {
         public Donation(Guid id)
         {
             Id = id;
         }
+        public enum DonationStatus
+        {
+            Pending,
+            Approved,
+            PickedUp,
+            Delivered,
+            Cancelled
+        }
 
-        public string FoodType { get; set; }
+        public required string FoodType { get; set; }
         public int Quantity { get; set; }
         public DateTime PickupTime { get; set; }
-        public string Status { get; set; }
-        public string Location { get; set; }
+        public DonationStatus Status { get; set; } = DonationStatus.Pending; //defult
+        public required string Location { get; set; }
 
         public Guid UserId { get; set; } // foreign key
         public User? Doner { get; set; } // navigaton property
@@ -26,6 +34,6 @@ namespace FoodRescue.Domain.Models
         public Guid CharityId { get; set; } // foreign key
         public Charity? Charity { get; set; } // navigation property
 
-       
+
     }
 }

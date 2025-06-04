@@ -26,5 +26,6 @@ namespace FoodRescue.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id) =>
             HandleResult(await _userService.DeleteAsync(id));
+
     }
 }

@@ -17,6 +17,9 @@ public static class DependencyInjection
         services.AddScoped<ICharityService, CharityService>();
         services.AddScoped<ICookieAuthService,CookieAuthService>();
         services.AddScoped<IUserService,UserService>();
+        services.AddScoped<IDonationService, DonationService>();
+        services.AddScoped<ICurrentLoggedInUser, CurrentLoggedInUser>();
+
 
         return services;
     }
