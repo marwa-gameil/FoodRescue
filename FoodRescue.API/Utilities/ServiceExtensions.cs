@@ -18,7 +18,7 @@ public static class ServiceExtensions
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddDbConte0tPoolConfiguration(configuration);
-        
+
 
         services.AddIdentityConfiguration(configuration);
         services.AddAuthentication();
@@ -36,7 +36,7 @@ public static class ServiceExtensions
 
     public static IServiceCollection AddDbConte0tPoolConfiguration(this IServiceCollection services, IConfiguration configuration) =>
         services.AddDbContext<ApplicationDbContext>(
-            options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+            options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
         );
 
     public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services, IConfiguration configuration)
