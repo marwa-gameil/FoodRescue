@@ -12,7 +12,7 @@ namespace FoodRescue.Application.Interfaces
     public interface ICookieAuthService
     {
 
-        Task<Result> LoginAsync(LoginDTO loginDTO);
+        Task<Result<UserDTO>> LoginAsync(LoginDTO loginDTO);
         Task<Result> LogoutAsync();
         Task<Result<UserDTO>> RegisterAsync(RegisterDto registerDto);
     }

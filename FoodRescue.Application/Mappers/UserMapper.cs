@@ -16,7 +16,8 @@ namespace FoodRescue.Application.Mappers
              Name = userDTO.Name,
              UserName = userDTO.Email,
              Email = userDTO.Email,
-             Address = userDTO.Address
+             Address = userDTO.Address,
+             PhoneNumber = userDTO.PhoneNumber
             
          };
         public static UserDTO ToUserDTO(this User user) =>
@@ -25,7 +26,8 @@ namespace FoodRescue.Application.Mappers
                 Id = user.Id,
                 Name = user.Name,
                 Email = user.Email!,
-                Address = user.Address
+                Address = user.Address,
+                PhoneNumber = user.PhoneNumber
                 
             };
     }

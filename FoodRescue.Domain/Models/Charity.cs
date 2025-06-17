@@ -23,6 +23,7 @@ namespace FoodRescue.Domain.Models
         public User User { get; set; }
 
 
+
        
        
         

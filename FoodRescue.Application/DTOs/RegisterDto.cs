@@ -21,6 +21,9 @@ namespace FoodRescue.Application.DTOs
         public required string Address { get; set; }
 
         [Required]
+        public required string PhoneNumber { get; set; }
+
+        [Required]
         public bool IsCharity { get; set; }
 
         [VerificationDocRequired]

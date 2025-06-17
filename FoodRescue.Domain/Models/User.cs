@@ -9,7 +9,10 @@ namespace FoodRescue.Domain.Models
 
         public required string Name { get; set; }
         public required string Address { get; set; }
-     
+
+       
+        
+        
 
     }
     

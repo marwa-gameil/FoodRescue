@@ -51,7 +51,7 @@ namespace FoodRescue.Application.Services
                 return Result.Fail<CharityDto>(AppResponses.NotFoundResponse(charityDto.UserId, nameof(User)));
             }
             string fileName = $"Charity_{user.Name}_{Guid.NewGuid()}.pdf";
-
+          
             var folderPath = Path.Combine("wwwroot", "docs");
             if (!Directory.Exists(folderPath))
                 Directory.CreateDirectory(folderPath);
@@ -75,7 +75,11 @@ namespace FoodRescue.Application.Services
                 UserName = user.Name,
                 IsVerfied = false,
                 UserId = user.Id,
-                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}"
+                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}",
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Address= user.Address
+                
             };
 
             return Result.Success(charitydto);
@@ -104,7 +108,10 @@ namespace FoodRescue.Application.Services
                 UserName = charity.User.Name,
                 IsVerfied = charity.IsVerfied,
                 UserId = charity.UserId,
-                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}"
+                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}",
+                Email = charity.User.Email,
+                PhoneNumber = charity.User.PhoneNumber,
+                Address = charity.User.Address
 
             };
             return Result.Success(await _charities.GetAll(charityWithUser));
@@ -122,8 +129,10 @@ namespace FoodRescue.Application.Services
                 UserName = charity.User.Name,
                 IsVerfied = charity.IsVerfied,
                 UserId = charity.UserId,
-                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}"
-            
+                VerificationDocumentURL = $"{_domain}/docs/{charity.VerificationDocument}",
+                Email = charity.User.Email,
+                PhoneNumber = charity.User.PhoneNumber,
+                Address = charity.User.Address
             };
             var charity = await _charities.GetOne(charityWithUser);
             if(charity == null) 

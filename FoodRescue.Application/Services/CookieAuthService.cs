@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using FoodRescue.Domain.Specifications;
 namespace FoodRescue.Application.Services
 {
     public class CookieAuthService : ICookieAuthService
@@ -25,16 +25,30 @@ namespace FoodRescue.Application.Services
             _signInManager = signInManager;
             _charities = charities;
         }
-        public async Task<Result> LoginAsync(LoginDTO loginDTO)
+        public async Task<Result<UserDTO>> LoginAsync(LoginDTO loginDTO)
         {
             User? user = await _userManager.FindByEmailAsync(loginDTO.Email);
             if (user is not null)
             {
-                var result = await _signInManager.PasswordSignInAsync(user,loginDTO.Password,false,false);
+                var result = await _signInManager.PasswordSignInAsync(user, loginDTO.Password, false, false);
                 if (result.Succeeded)
-                    return Result.Success();
+                {
+                    Charity? charity = await _charities.GetOne(new Specification<Charity>(c => c.UserId == user.Id));
+                    return Result.Success(
+                        new UserDTO
+                        {
+                            Id = user.Id,
+                            Name = user.Name,
+                            Address = user.Address,
+                            PhoneNumber = user.PhoneNumber,
+                            Email = user.Email,
+                            IsCharity = (charity != null)
+                        }
+                        );
+                }
             }
-            return Result.Fail(AppResponses.UnAuthorizedResponse);
+            
+            return Result.Fail<UserDTO>(AppResponses.UnAuthorizedResponse);
         }
 
         public async Task<Result> LogoutAsync()

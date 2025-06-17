@@ -31,4 +31,8 @@
     <ProjectReference Include="..\FoodRescue.Infrastructure\FoodRescue.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\docs\" />
+  </ItemGroup>
+
 </Project>
