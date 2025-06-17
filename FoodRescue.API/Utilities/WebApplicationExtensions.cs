@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using FoodRescue.Domain.Models;
+using FoodRescue.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodRescue.Presentation.Utilities;
 
@@ -8,6 +10,12 @@ public static class WebAppExtensions
 {
     public static void Configure(this WebApplication app)
     {
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            dbContext.Database.Migrate();
+        }
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseAuthentication();
@@ -21,14 +29,14 @@ public static class WebAppExtensions
         }
         app.Lifetime.ApplicationStarted.Register(async () => await app.PreLoadDefaultData());
     }
-    
+
     private static async Task PreLoadDefaultData(this WebApplication app)
     {
         using var scope = app.Services.CreateAsyncScope();
-      
+
         var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
         await roleManager.CreateRolesIfNotExist(["Donor", "Charity", "Admin"]);
-   
+
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
         User? user = scope.ServiceProvider.GetService<IOptions<User>>()?.Value;
         if(user is not null)await userManager.CreateUserIfNotExist(user, "Admin");
@@ -56,5 +64,5 @@ public static class WebAppExtensions
             foreach(var e in result.Errors) Console.WriteLine(e.Description);
         }
     }
-    
+
 }
